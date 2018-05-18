@@ -5,3 +5,5 @@ Droid/obj
 packages
 iOS/bin
 iOS/obj
+iOS/obj/iPhoneSimulator/Debug/device-builds/iphone10.3-11.3/mtouch-cache/entry-points.txt
+iOS/obj/iPhoneSimulator/Debug/device-builds/iphone10.3-11.3/mtouch-cache/arguments

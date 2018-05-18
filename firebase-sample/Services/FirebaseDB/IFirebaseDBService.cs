@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.ObjectModel;
+using firebasesample.Models;
+
 namespace firebasesample.Services.FirebaseDB
 {
     public interface IFirebaseDBService
@@ -6,6 +9,6 @@ namespace firebasesample.Services.FirebaseDB
         void Connect();
         void GetMessage();
         void SetMessage(String message);
-        String GetMessageKey();
+        string GetMessageKey();
     }
 }

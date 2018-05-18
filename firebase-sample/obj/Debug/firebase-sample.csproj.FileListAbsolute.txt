@@ -55,3 +55,32 @@
 /Users/jccoin/firebase forms/firebase-sample/obj/Debug/firebasesample.Views.Login.SignUpView.xaml.g.cs
 /Users/jccoin/firebase forms/firebase-sample/obj/Debug/firebase-sample.dll
 /Users/jccoin/firebase forms/firebase-sample/obj/Debug/firebase-sample.pdb
+/Users/jccoin/Documents/GitHub/testFirebase/firebase-sample/bin/Debug/firebase-sample.dll
+/Users/jccoin/Documents/GitHub/testFirebase/firebase-sample/bin/Debug/firebase-sample.pdb
+/Users/jccoin/Documents/GitHub/testFirebase/firebase-sample/bin/Debug/Acr.UserDialogs.dll
+/Users/jccoin/Documents/GitHub/testFirebase/firebase-sample/bin/Debug/Acr.UserDialogs.Interface.dll
+/Users/jccoin/Documents/GitHub/testFirebase/firebase-sample/bin/Debug/Splat.dll
+/Users/jccoin/Documents/GitHub/testFirebase/firebase-sample/bin/Debug/Unity.Abstractions.dll
+/Users/jccoin/Documents/GitHub/testFirebase/firebase-sample/bin/Debug/Unity.Container.dll
+/Users/jccoin/Documents/GitHub/testFirebase/firebase-sample/bin/Debug/Xamarin.Forms.Core.dll
+/Users/jccoin/Documents/GitHub/testFirebase/firebase-sample/bin/Debug/Xamarin.Forms.Platform.dll
+/Users/jccoin/Documents/GitHub/testFirebase/firebase-sample/bin/Debug/Xamarin.Forms.Xaml.dll
+/Users/jccoin/Documents/GitHub/testFirebase/firebase-sample/bin/Debug/Acr.UserDialogs.pdb
+/Users/jccoin/Documents/GitHub/testFirebase/firebase-sample/bin/Debug/Acr.UserDialogs.Interface.pdb
+/Users/jccoin/Documents/GitHub/testFirebase/firebase-sample/bin/Debug/Unity.Abstractions.pdb
+/Users/jccoin/Documents/GitHub/testFirebase/firebase-sample/bin/Debug/Unity.Container.pdb
+/Users/jccoin/Documents/GitHub/testFirebase/firebase-sample/bin/Debug/Xamarin.Forms.Core.pdb
+/Users/jccoin/Documents/GitHub/testFirebase/firebase-sample/bin/Debug/Xamarin.Forms.Core.dll.mdb
+/Users/jccoin/Documents/GitHub/testFirebase/firebase-sample/bin/Debug/Xamarin.Forms.Core.xml
+/Users/jccoin/Documents/GitHub/testFirebase/firebase-sample/bin/Debug/Xamarin.Forms.Xaml.pdb
+/Users/jccoin/Documents/GitHub/testFirebase/firebase-sample/bin/Debug/Xamarin.Forms.Xaml.dll.mdb
+/Users/jccoin/Documents/GitHub/testFirebase/firebase-sample/bin/Debug/Xamarin.Forms.Xaml.xml
+/Users/jccoin/Documents/GitHub/testFirebase/firebase-sample/obj/Debug/firebase-sample.csprojResolveAssemblyReference.cache
+/Users/jccoin/Documents/GitHub/testFirebase/firebase-sample/obj/Debug/firebase-sample.csproj.CoreCompileInputs.cache
+/Users/jccoin/Documents/GitHub/testFirebase/firebase-sample/obj/Debug/firebasesample.App.xaml.g.cs
+/Users/jccoin/Documents/GitHub/testFirebase/firebase-sample/obj/Debug/firebasesample.firebase-samplePage.xaml.g.cs
+/Users/jccoin/Documents/GitHub/testFirebase/firebase-sample/obj/Debug/firebasesample.Views.Login.LoginView.xaml.g.cs
+/Users/jccoin/Documents/GitHub/testFirebase/firebase-sample/obj/Debug/firebasesample.Views.Main.MainView.xaml.g.cs
+/Users/jccoin/Documents/GitHub/testFirebase/firebase-sample/obj/Debug/firebasesample.Views.Login.SignUpView.xaml.g.cs
+/Users/jccoin/Documents/GitHub/testFirebase/firebase-sample/obj/Debug/firebase-sample.dll
+/Users/jccoin/Documents/GitHub/testFirebase/firebase-sample/obj/Debug/firebase-sample.pdb

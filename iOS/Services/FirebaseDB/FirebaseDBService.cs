@@ -11,13 +11,15 @@ using UIKit;
 using Xamarin.Auth;
 using Xamarin.Forms;
 using Firebase.Database;
+using System.Collections.ObjectModel;
+using firebasesample.Models;
 
 [assembly: Dependency(typeof(FirebaseDBService))]
 namespace firebasesample.iOS.Services.FirebaseDB
 {
     public class FirebaseDBService : IFirebaseDBService
     {
-        public static String KEY_MESSAGE = "message";
+        public static String KEY_MESSAGE = "items";
 
         
         private FirebaseAuthService authService = new FirebaseAuthService();
@@ -28,22 +30,33 @@ namespace firebasesample.iOS.Services.FirebaseDB
         }
         public void GetMessage(){
           var userId = authService.GetUserId();
-            var messages = databaseReference.GetChild("messages").GetChild(userId);
-            nuint handleReference = messages.ObserveEvent(DataEventType.Value, (snapshot) => {
+
+           
+
+            var messages = databaseReference.GetChild("items").GetChild(userId);
+
+            nuint handleReference2 = messages.ObserveEvent(DataEventType.Value, (snapshot) => {
                 //var folderData = snapshot.GetValue<NSDictionary>();
                 // Do magic with the folder data
-                String message = "";
-                if (snapshot.GetValue() != NSNull.Null)
+                NSDictionary folderData = snapshot.GetValue<NSDictionary>();
+                var keys = folderData.Keys;
+                ObservableCollection<Homework> list = new ObservableCollection<Homework>();
+                foreach (var item in folderData)
                 {
-                     message = snapshot.GetValue().ToString();
+                    list.Add(new Homework
+                    {
+                        Key = item.Key.ToString(),
+                        HomeWork = item.Value.ToString()
+                    });
                 }
-                MessagingCenter.Send(FirebaseDBService.KEY_MESSAGE, FirebaseDBService.KEY_MESSAGE, message);
-           });
+                MessagingCenter.Send(FirebaseDBService.KEY_MESSAGE, FirebaseDBService.KEY_MESSAGE, list);
+
+            });
         }
         public void SetMessage(String message){
             var userId = authService.GetUserId();
-            var messages = databaseReference.GetChild("messages").GetChild(userId);
-            messages.SetValue<NSString>((Foundation.NSString)message);
+            var messages = databaseReference.GetChild("items").GetChild(userId);
+            //messages.SetValues((Foundation.NSPropertyListFormat)message);
         }
         public String GetMessageKey(){
             return KEY_MESSAGE;

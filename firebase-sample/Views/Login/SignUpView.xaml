@@ -17,14 +17,7 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
-                <Label Text="Firebase Sample" FontSize="60" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="0" TextColor="#1FBED6">
-                    <Label.FontFamily>
-                        <OnPlatform x:TypeArguments="x:String">
-                            <OnPlatform.iOS>MarkerFelt-Thin</OnPlatform.iOS>
-                            <OnPlatform.Android></OnPlatform.Android>
-                            <OnPlatform.WinPhone></OnPlatform.WinPhone>
-                        </OnPlatform>
-                    </Label.FontFamily>
+                <Label Text="Firebase Sample" FontSize="60" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="0" TextColor="#C2C700">                  
                 </Label>
 
 
@@ -42,7 +35,7 @@
                 <BoxView HeightRequest="1" Grid.Row="3" HorizontalOptions="Fill" BackgroundColor="White" VerticalOptions="End"/>
 
                 <StackLayout Grid.Row="4" Spacing="12" HorizontalOptions="Fill" Padding="{x:Static Common:DoubleResources.ButtonGroupPadding}">
-                    <Button Text="Sign Up" Command="{Binding SignUpCommand}"  BackgroundColor="#1FBED6" HorizontalOptions="Fill" TextColor="Black" HeightRequest="{x:Static Common:DoubleResources.SignUpButtonHeight}"/>
+                    <Button Text="Sign Up" Command="{Binding SignUpCommand}"  BackgroundColor="#C2C700" HorizontalOptions="Fill" TextColor="Black" HeightRequest="{x:Static Common:DoubleResources.SignUpButtonHeight}"/>
 
                    
                     <StackLayout Spacing="5">

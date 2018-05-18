@@ -1,10 +1,18 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="firebasesample.Views.Main.MainView">
     <ContentPage.Content>
-        <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-        <Label Text="Welcome Firebase-Sample. You are login!" VerticalOptions="Center" HorizontalOptions="Center" />
-        <Entry VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Text="{Binding Message}"/>
-         <Button Text="Save" Command="{Binding SaveTextCommand}" BackgroundColor="#1FBED6" HorizontalOptions="Fill" TextColor="White" />
-        <Button Text="Logout" Command="{Binding LogoutCommand}" BackgroundColor="#1FBED6" HorizontalOptions="Fill" TextColor="White" />
+        <StackLayout Padding="20" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+        <Label Text="Lista de tareas" Margin="0,20,0,0" VerticalOptions="Center" HorizontalOptions="Center" />
+        <ListView x:Name="lst" VerticalOptions="Start" HorizontalOptions="FillAndExpand" ItemsSource="{Binding List}">
+            <ListView.ItemTemplate>  
+                <DataTemplate>                          
+                    <ImageCell Text="{Binding HomeWork}"></ImageCell>  
+                </DataTemplate>  
+            </ListView.ItemTemplate>  
+        </ListView>   
+
+        <Entry VerticalOptions="Center" Margin="0,20,0,0" HorizontalOptions="FillAndExpand" Text="{Binding Message}"/>
+         <Button Margin="0,20,0,0" Text="Añadir" Command="{Binding SaveTextCommand}" BackgroundColor="#C2C700" HorizontalOptions="Fill" TextColor="White" />
+        <Button  Text="Logout" Command="{Binding LogoutCommand}" BackgroundColor="#C2C700" HorizontalOptions="Fill" TextColor="White" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

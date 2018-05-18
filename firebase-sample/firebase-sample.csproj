@@ -71,6 +71,7 @@
     <Compile Include="Helpers\DoubleResources.cs" />
     <Compile Include="Services\FirebaseAuth\IFirebaseAuthService.cs" />
     <Compile Include="Services\FirebaseDB\IFirebaseDBService.cs" />
+    <Compile Include="Models\Homework.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Splat">

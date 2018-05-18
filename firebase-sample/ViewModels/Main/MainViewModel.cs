@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using firebasesample.Models;
 using firebasesample.Services.FirebaseAuth;
 using firebasesample.Services.FirebaseDB;
 using firebasesample.ViewModels.Base;
@@ -15,17 +17,16 @@ namespace firebasesample.ViewModels.Main
         private ICommand _saveTextCommand;
         private IFirebaseAuthService _firebaseAuthService;
         private IFirebaseDBService _firebaseDatabaseService;
-        private String _message;
         public MainViewModel()
         {
             _firebaseAuthService = DependencyService.Get<IFirebaseAuthService>();
             _firebaseDatabaseService = DependencyService.Get<IFirebaseDBService>();
             _firebaseDatabaseService.Connect();
             _firebaseDatabaseService.GetMessage();
-            MessagingCenter.Subscribe<String, String>(this, _firebaseDatabaseService.GetMessageKey(), (sender, args) =>
+            MessagingCenter.Subscribe<String, ObservableCollection<Homework>>(this, _firebaseDatabaseService.GetMessageKey(), (sender, args) =>
             {
-                Message  = (args);
-
+                //Message = (args);
+                List = (args);
             });
         }
 
@@ -54,6 +55,7 @@ namespace firebasesample.ViewModels.Main
 
         }
 
+        private String _message;
         public String Message
         {
             get
@@ -63,6 +65,20 @@ namespace firebasesample.ViewModels.Main
             set
             {
                 _message = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        private ObservableCollection<Homework> _list;
+        public ObservableCollection<Homework> List
+        {
+            get
+            {
+                return _list;
+            }
+            set
+            {
+                _list = value;
                 RaisePropertyChanged();
             }
         }
