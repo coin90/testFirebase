@@ -5,7 +5,7 @@ using System.Linq;
 using Foundation;
 using UIKit;
 
-namespace firebase.iOS
+namespace firebasesample.iOS
 {
     public class Application
     {

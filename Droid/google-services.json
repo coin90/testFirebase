@@ -1,0 +1,42 @@
+{
+    "project_info": {
+        "project_number": "719081152163",
+        "firebase_url": "https://meetup-bravent.firebaseio.com",
+        "project_id": "meetup-bravent",
+        "storage_bucket": "meetup-bravent.appspot.com"
+    },
+    "client": [
+        {
+            "client_info": {
+                "mobilesdk_app_id": "1:719081152163:android:549109242d013dca",
+                "android_client_info": {
+                    "package_name": "net.bravent.meetupfirebase"
+                }
+            },
+            "oauth_client": [
+                {
+                    "client_id": "719081152163-km9tnjj1d3ba9eenrg9pmh7aie04iqmt.apps.googleusercontent.com",
+                    "client_type": 3
+                }
+            ],
+            "api_key": [
+                {
+                    "current_key": "AIzaSyDIMxo8ppL5ZMtYZf5Uf6uEq6GcMGIUElI"
+                }
+            ],
+            "services": {
+                "analytics_service": {
+                    "status": 1
+                },
+                "appinvite_service": {
+                    "status": 1,
+                    "other_platform_oauth_client": []
+                },
+                "ads_service": {
+                    "status": 2
+                }
+            }
+        }
+    ],
+    "configuration_version": "1"
+}

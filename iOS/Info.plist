@@ -1,13 +1,13 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
 	<key>CFBundleDisplayName</key>
-	<string>firebase</string>
+	<string>firebase-sample</string>
 	<key>CFBundleName</key>
-	<string>firebase</string>
+	<string>firebase-sample</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.test.firebase</string>
+	<string>net.bravent.meetupfirebase</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
@@ -42,9 +42,18 @@
 	</array>
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/AppIcon.appiconset</string>
-	<key>UIStatusBarStyle</key>
-	<string>UIStatusBarStyleLightContent</string>
-	<key>UIViewControllerBasedStatusBarAppearance</key>
-	<false />
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>net.bravent.meetupfirebase</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.719081152163-odlthbmghah3m60ji4bt5dg3o1ghg089</string>
+			</array>
+			<key>CFBundleURLTypes</key>
+			<string>Viewer</string>
+		</dict>
+	</array>
 </dict>
 </plist>
