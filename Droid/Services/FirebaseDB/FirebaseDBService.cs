@@ -10,6 +10,10 @@ using firebasesample.Droid.Activities;
 using firebasesample.Droid.Services.FirebaseDB;
 using firebasesample.Services.FirebaseDB;
 using Firebase.Database;
+using Android.Util;
+using System.Linq;
+using System.Collections.ObjectModel;
+using firebasesample.Models;
 
 [assembly: Dependency(typeof(FirebaseDBService))]
 namespace firebasesample.Droid.Services.FirebaseDB
@@ -19,8 +23,19 @@ namespace firebasesample.Droid.Services.FirebaseDB
         public void OnCancelled(DatabaseError error) { }
 
         public void OnDataChange(DataSnapshot snapshot) {
-            String message = snapshot.Value?.ToString();
-            MessagingCenter.Send(FirebaseDBService.KEY_MESSAGE, FirebaseDBService.KEY_MESSAGE, message);                         
+            ObservableCollection<Homework> list = new ObservableCollection<Homework>();
+
+            foreach (DataSnapshot item in snapshot.Children.ToEnumerable<DataSnapshot>())
+            {
+                list.Add(new Homework
+                {
+                    Key = item.Key.ToString(),
+                    HomeWork = item.Value.ToString()
+                });
+               
+            }
+
+            MessagingCenter.Send(FirebaseDBService.KEY_MESSAGE, FirebaseDBService.KEY_MESSAGE, list);                         
         }
     }
 
@@ -53,7 +68,10 @@ namespace firebasesample.Droid.Services.FirebaseDB
         {
             var userId = authService.GetUserId();
             databaseReference = database.GetReference("items/" + userId);
-            databaseReference.SetValue(message);
+
+            String key = databaseReference.Push().Key;
+
+            databaseReference.Child(key).SetValue(message);
         }
     }
 }
