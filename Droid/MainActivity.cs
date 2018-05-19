@@ -36,15 +36,15 @@ namespace firebasesample.Droid
         private void InitFirebaseAuth()
         {
             var options = new FirebaseOptions.Builder()
-                                             .SetApplicationId("1:1097377960003:android:157ab92effee9dca")
-                                             .SetApiKey("AIzaSyBk3GHX3bGTVryc-X7Qx08UDDod9QWMpYQ")
-                                             .SetDatabaseUrl("https://meetup-9ea10.firebaseio.com/")
+                                             .SetApplicationId("1:719081152163:android:549109242d013dca")
+                                             .SetApiKey("AIzaSyCyU0dvDzFTETYVpAtxhtoG932nZBl9bu0")
+                                             .SetDatabaseUrl("https://meetup-bravent.firebaseio.com/")
             .Build();
 
 
 
             if (app == null)
-                app = FirebaseApp.InitializeApp(this, options, "meetup");
+                app = FirebaseApp.InitializeApp(this, options, "meetup - bravent");
 
         }
 

@@ -4,8 +4,20 @@
         <Label Text="Lista de tareas" Margin="0,20,0,0" VerticalOptions="Center" HorizontalOptions="Center" />
         <ListView x:Name="lst" VerticalOptions="Start" HorizontalOptions="FillAndExpand" ItemsSource="{Binding List}">
             <ListView.ItemTemplate>  
-                <DataTemplate>                          
-                    <ImageCell Text="{Binding HomeWork}"></ImageCell>  
+                <DataTemplate>  
+                         <ViewCell>
+                  <StackLayout>
+                    <!--<Image Source="{Binding image}" />-->
+                    <Label Text="{Binding HomeWork}" TextColor="#f35e20" />
+                    <Label Text="Borrar" >
+                                    
+                    </Label>
+                  </StackLayout>
+              </ViewCell>
+                      <!--  <viewc
+                    <ImageCell Text="{Binding }"></ImageCell>     
+                    <Label Text=""  />
+-->
                 </DataTemplate>  
             </ListView.ItemTemplate>  
         </ListView>   
