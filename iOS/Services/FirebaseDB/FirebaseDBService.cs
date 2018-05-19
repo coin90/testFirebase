@@ -55,8 +55,9 @@ namespace firebasesample.iOS.Services.FirebaseDB
         }
         public void SetMessage(String message){
             var userId = authService.GetUserId();
-            var messages = databaseReference.GetChild("items").GetChild(userId);
-            //messages.SetValues((Foundation.NSPropertyListFormat)message);
+            var messages = databaseReference.GetChild("items").GetChild(userId).Reference;
+            var key = messages.GetChildByAutoId().Key;
+            messages.GetChild(key).SetValue((NSString)message);
         }
         public String GetMessageKey(){
             return KEY_MESSAGE;

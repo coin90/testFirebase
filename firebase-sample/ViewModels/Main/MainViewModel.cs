@@ -52,7 +52,7 @@ namespace firebasesample.ViewModels.Main
         private async Task SaveTextCommandExecute()
         {
             _firebaseDatabaseService.SetMessage(Message);
-
+            _firebaseDatabaseService.GetMessage();
         }
 
         private String _message;
