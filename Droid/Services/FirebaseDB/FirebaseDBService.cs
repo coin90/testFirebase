@@ -73,5 +73,13 @@ namespace firebasesample.Droid.Services.FirebaseDB
 
             databaseReference.Child(key).SetValue(message);
         }
+
+        public void DeleteItem(string key)
+        {
+            var userId = authService.GetUserId();
+            databaseReference = database.GetReference("items/" + userId);
+            databaseReference.Child(key).RemoveValue();
+
+        }
     }
 }

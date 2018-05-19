@@ -62,5 +62,12 @@ namespace firebasesample.iOS.Services.FirebaseDB
         public String GetMessageKey(){
             return KEY_MESSAGE;
         }
+
+        public void DeleteItem(string key)
+        {
+            var userId = authService.GetUserId();
+            var messages = databaseReference.GetChild("items").GetChild(userId).Reference;
+            messages.GetChild(key).RemoveValue();
+        }
     }
 }

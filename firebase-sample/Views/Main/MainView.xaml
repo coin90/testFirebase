@@ -9,9 +9,17 @@
                   <StackLayout>
                     <!--<Image Source="{Binding image}" />-->
                     <Label Text="{Binding HomeWork}" TextColor="#f35e20" />
-                    <Label Text="Borrar" >
+                    <Button Text="Delete" CommandParameter="{Binding Key}" Clicked="DeleteClicked"/>        
+
+<!--                    <Label Text="borrar">
+                         <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer
+                                    Command="{Binding DeleteCommand}"
+                                    NumberOfTapsRequired="1" />
+                        </StackLayout.GestureRecognizers>
+                    </Label>-->
+
                                     
-                    </Label>
                   </StackLayout>
               </ViewCell>
                       <!--  <viewc

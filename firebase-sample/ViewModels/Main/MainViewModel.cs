@@ -15,6 +15,7 @@ namespace firebasesample.ViewModels.Main
     {
         private ICommand _logoutCommand;
         private ICommand _saveTextCommand;
+        private ICommand _deleteCommand;
         private IFirebaseAuthService _firebaseAuthService;
         private IFirebaseDBService _firebaseDatabaseService;
         public MainViewModel()
@@ -52,6 +53,17 @@ namespace firebasesample.ViewModels.Main
         private async Task SaveTextCommandExecute()
         {
             _firebaseDatabaseService.SetMessage(Message);
+            _firebaseDatabaseService.GetMessage();
+        }
+
+
+        public ICommand DeleteCommand
+        {
+            get { return _deleteCommand = _deleteCommand ?? new DelegateCommandAsync<string>(DeleteCommandExecute); }
+        }
+        private async Task DeleteCommandExecute(string key)
+        {
+            _firebaseDatabaseService.DeleteItem(key);
             _firebaseDatabaseService.GetMessage();
         }
 

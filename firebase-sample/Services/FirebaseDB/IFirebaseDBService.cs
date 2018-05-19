@@ -10,5 +10,6 @@ namespace firebasesample.Services.FirebaseDB
         void GetMessage();
         void SetMessage(String message);
         string GetMessageKey();
+        void DeleteItem(string key);
     }
 }
