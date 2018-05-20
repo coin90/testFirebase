@@ -17,29 +17,29 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
-                <Label Text="Firebase Sample" FontSize="60" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="0" TextColor="#C2C700">                  
+                <Label Text="Meetup Firebase" FontSize="60" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="0" TextColor="#C2C700">                  
                 </Label>
 
 
 
                 <Grid Grid.Row="2" HorizontalOptions="Fill" Padding="5">
                     
-                    <Entry Placeholder="Email Address" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black"   Text="{Binding Username}"/>
+                    <Entry Placeholder="Correo" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black"   Text="{Binding Username}"/>
                 </Grid>
                 <BoxView HeightRequest="1" Grid.Row="2" HorizontalOptions="Fill" BackgroundColor="White" VerticalOptions="End"/>
 
                 <Grid Grid.Row="3" HorizontalOptions="Fill" Padding="5">
                     
-                    <Entry Placeholder="Password"   IsPassword="true" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black"   Text="{Binding Password}"/>
+                    <Entry Placeholder="Contraseña"   IsPassword="true" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black"   Text="{Binding Password}"/>
                 </Grid>
                 <BoxView HeightRequest="1" Grid.Row="3" HorizontalOptions="Fill" BackgroundColor="White" VerticalOptions="End"/>
 
                 <StackLayout Grid.Row="4" Spacing="12" HorizontalOptions="Fill" Padding="{x:Static Common:DoubleResources.ButtonGroupPadding}">
-                    <Button Text="Sign Up" Command="{Binding SignUpCommand}"  BackgroundColor="#C2C700" HorizontalOptions="Fill" TextColor="Black" HeightRequest="{x:Static Common:DoubleResources.SignUpButtonHeight}"/>
+                    <Button Text="Registrarse" Command="{Binding SignUpCommand}"  BackgroundColor="#C2C700" HorizontalOptions="Fill" TextColor="Black" HeightRequest="{x:Static Common:DoubleResources.SignUpButtonHeight}"/>
 
                    
                     <StackLayout Spacing="5">
-                        <Label Text="Or click here if you have an account"  HorizontalOptions="Center" TextColor="Black" FontSize="12"/>
+                        <Label Text="Click aquí si ya tienes cuenta"  HorizontalOptions="Center" TextColor="Black" FontSize="12"/>
                         <BoxView HeightRequest="1" HorizontalOptions="Fill" BackgroundColor="White" VerticalOptions="End"/>
                         <StackLayout.GestureRecognizers>
                             <TapGestureRecognizer
