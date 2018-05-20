@@ -46,7 +46,7 @@ namespace firebasesample.Droid.Activities
                                     .RequestProfile()
                                     .Build();
 
-            String token = "1097377960003-2lf21sco60524uocauq13sg4q859739p.apps.googleusercontent.com";
+            String token = "719081152163-km9tnjj1d3ba9eenrg9pmh7aie04iqmt.apps.googleusercontent.com";
             GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DefaultSignIn)
                                                              .RequestIdToken(token)
                 .Build();

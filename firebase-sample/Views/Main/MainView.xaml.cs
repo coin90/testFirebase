@@ -19,5 +19,13 @@ namespace firebasesample.Views.Main
 
             if (viewModel != null) viewModel.OnAppearing(null);
         }
+
+        public void DeleteClicked(object sender, EventArgs e)  
+        {  
+           var item = (Xamarin.Forms.Button)sender;  
+
+            viewModel = BindingContext as MainViewModel;
+            viewModel.DeleteCommand.Execute(item.CommandParameter.ToString());
+        }  
     }
 }
