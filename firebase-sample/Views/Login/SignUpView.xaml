@@ -1,12 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-    x:Class="firebasesample.Views.Login.SignUpView"
-    xmlns:Common="clr-namespace:firebasesample.Helpers;">
-	 <AbsoluteLayout VerticalOptions="FillAndExpand"
-                    HorizontalOptions="FillAndExpand">
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage x:Class="firebasesample.Views.Login.SignUpView"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:Common="clr-namespace:firebasesample.Helpers;">
+    <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
-        
-        <ScrollView AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1">
+
+        <ScrollView AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All">
             <Grid Padding="20, 30, 20, 20" RowSpacing="20">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
@@ -17,36 +17,74 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
-                <Label Text="Firebase Sample" FontSize="60" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="0" TextColor="#C2C700">                  
-                </Label>
+                <Label Grid.Row="0"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       FontSize="60"
+                       Text="Firebase Sample"
+                       TextColor="#C2C700" />
 
 
 
-                <Grid Grid.Row="2" HorizontalOptions="Fill" Padding="5">
-                    
-                    <Entry Placeholder="Email Address" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black"   Text="{Binding Username}"/>
+                <Grid Grid.Row="2"
+                      HorizontalOptions="Fill"
+                      Padding="5">
+
+                    <Entry HorizontalOptions="Fill"
+                           BackgroundColor="Transparent"
+                           Placeholder="Email Address"
+                           Keyboard="Email"
+                           Text="{Binding Username}"
+                           TextColor="Black" />
                 </Grid>
-                <BoxView HeightRequest="1" Grid.Row="2" HorizontalOptions="Fill" BackgroundColor="White" VerticalOptions="End"/>
+                <BoxView Grid.Row="2"
+                         HeightRequest="1"
+                         HorizontalOptions="Fill"
+                         VerticalOptions="End"
+                         BackgroundColor="White" />
 
-                <Grid Grid.Row="3" HorizontalOptions="Fill" Padding="5">
-                    
-                    <Entry Placeholder="Password"   IsPassword="true" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black"   Text="{Binding Password}"/>
+                <Grid Grid.Row="3"
+                      HorizontalOptions="Fill"
+                      Padding="5">
+
+                    <Entry HorizontalOptions="Fill"
+                           BackgroundColor="Transparent"
+                           IsPassword="true"
+                           Placeholder="Password"
+                           Text="{Binding Password}"
+                           TextColor="Black" />
                 </Grid>
-                <BoxView HeightRequest="1" Grid.Row="3" HorizontalOptions="Fill" BackgroundColor="White" VerticalOptions="End"/>
+                <BoxView Grid.Row="3"
+                         HeightRequest="1"
+                         HorizontalOptions="Fill"
+                         VerticalOptions="End"
+                         BackgroundColor="White" />
 
-                <StackLayout Grid.Row="4" Spacing="12" HorizontalOptions="Fill" Padding="{x:Static Common:DoubleResources.ButtonGroupPadding}">
-                    <Button Text="Sign Up" Command="{Binding SignUpCommand}"  BackgroundColor="#C2C700" HorizontalOptions="Fill" TextColor="Black" HeightRequest="{x:Static Common:DoubleResources.SignUpButtonHeight}"/>
+                <StackLayout Grid.Row="4"
+                             HorizontalOptions="Fill"
+                             Padding="{x:Static Common:DoubleResources.ButtonGroupPadding}"
+                             Spacing="12">
+                    <Button HeightRequest="{x:Static Common:DoubleResources.SignUpButtonHeight}"
+                            HorizontalOptions="Fill"
+                            BackgroundColor="#C2C700"
+                            Command="{Binding SignUpCommand}"
+                            Text="Sign Up"
+                            TextColor="Black" />
 
-                   
+
                     <StackLayout Spacing="5">
-                        <Label Text="Or click here if you have an account"  HorizontalOptions="Center" TextColor="Black" FontSize="12"/>
-                        <BoxView HeightRequest="1" HorizontalOptions="Fill" BackgroundColor="White" VerticalOptions="End"/>
+                        <Label HorizontalOptions="Center"
+                               FontSize="12"
+                               Text="Or click here if you have an account"
+                               TextColor="Black" />
+                        <BoxView HeightRequest="1"
+                                 HorizontalOptions="Fill"
+                                 VerticalOptions="End"
+                                 BackgroundColor="White" />
                         <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer
-                                    Command="{Binding LoginCommand}"
-                                    NumberOfTapsRequired="1" />
+                            <TapGestureRecognizer Command="{Binding LoginCommand}" NumberOfTapsRequired="1" />
                         </StackLayout.GestureRecognizers>
-                    </StackLayout >
+                    </StackLayout>
                 </StackLayout>
 
 

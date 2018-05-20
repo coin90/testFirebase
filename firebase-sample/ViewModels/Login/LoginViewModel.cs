@@ -78,27 +78,50 @@ namespace firebasesample.ViewModels.Login
 
         private async Task LoginCommandExecute()
         {
-            if (await _firebaseService.SignIn(Username, Password))
-            {
-                await NavigationService.NavigateToAsync<MainViewModel>();
-            }
-            else
-            {
-                _userDialogService.Toast("Usuario o contraseña incorrectos");
-            }
-          
-        }
+            try
+			{
+				IsBusy = true;	
+				if (await _firebaseService.SignIn(Username, Password))
+				{
+					await NavigationService.NavigateToAsync<MainViewModel>();
+				}
+				else
+				{
+					_userDialogService.Toast("Usuario o contraseña incorrectos");
+				}
+			}
+			catch (Exception ex)
+			{
+				_userDialogService.Toast(ex.Message);
+			}
+			finally
+			{
+				IsBusy = false;
+			}
 
-        private async Task SignUpCommandExecute()
-        {
-            await NavigationService.NavigateToAsync<SignUpViewModel>();
+		}
+
+		private async Task SignUpCommandExecute()
+		{
+			try
+			{
+				IsBusy = true;
+				await NavigationService.NavigateToAsync<SignUpViewModel>();
+			}
+			catch (Exception ex)
+			{
+				_userDialogService.Toast(ex.Message);
+			}
+			finally
+			{
+				IsBusy = false;
+			}
         }
 
 
         private async Task LoginGoogleCommandExecute()
         {
              _firebaseService.SignInWithGoogle();
-
         }
 
         private async Task LoginGoogle(String token)
@@ -107,7 +130,10 @@ namespace firebasesample.ViewModels.Login
             {
                 await NavigationService.NavigateToAsync<MainViewModel>();
             }
-
+			else
+			{
+				_userDialogService.Toast("Algo ha ido mal");				
+			}
         }
     }
 }

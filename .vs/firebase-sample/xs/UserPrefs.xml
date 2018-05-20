@@ -1,0 +1,20 @@
+﻿<Properties StartupConfiguration="{5C437843-E5F0-4429-9E79-EE5CEDD3F04F}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="firebase-sample/ViewModels/Login/SignUpViewModel.cs">
+    <Files>
+      <File FileName="firebase-sample/ViewModels/Login/LoginViewModel.cs" Line="12" Column="47" />
+      <File FileName="firebase-sample/Views/Login/LoginView.xaml" Line="113" Column="15" />
+      <File FileName="firebase-sample/Views/Login/SignUpView.xaml" Line="95" Column="1" />
+      <File FileName="firebase-sample/Views/Main/MainView.xaml" Line="25" Column="44" />
+      <File FileName="firebase-sample/Views/Main/MainView.xaml.cs" Line="1" Column="1" />
+      <File FileName="firebase-sample/ViewModels/Main/MainViewModel.cs" Line="30" Column="16" />
+      <File FileName="firebase-sample/ViewModels/Login/SignUpViewModel.cs" Line="17" Column="34" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.firebase-sample.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.EB69BB90-9587-4739-926D-B6E898E1FF45" />
+  <MultiItemStartupConfigurations />
+</Properties>

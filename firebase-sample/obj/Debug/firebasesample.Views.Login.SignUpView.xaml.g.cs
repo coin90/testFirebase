@@ -11,8 +11,8 @@
 namespace firebasesample.Views.Login {
     
     
-    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("/Users/jccoin/Documents/GitHub/testFirebase/firebase-sample/Views/Login/SignUpVie" +
-        "w.xaml")]
+    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("/Users/javierhuamanchumoarauco/Documents/GitHub/testFirebase/firebase-sample/View" +
+        "s/Login/SignUpView.xaml")]
     public partial class SignUpView : global::Xamarin.Forms.ContentPage {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]

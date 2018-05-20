@@ -11,8 +11,8 @@
 namespace firebasesample.Views.Main {
     
     
-    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("/Users/jccoin/Documents/GitHub/testFirebase/firebase-sample/Views/Main/MainView.x" +
-        "aml")]
+    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("/Users/javierhuamanchumoarauco/Documents/GitHub/testFirebase/firebase-sample/View" +
+        "s/Main/MainView.xaml")]
     public partial class MainView : global::Xamarin.Forms.ContentPage {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]

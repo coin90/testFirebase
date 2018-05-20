@@ -8,7 +8,14 @@ namespace firebasesample.ViewModels.Base
 {
     public abstract class ViewModelBase : INotifyPropertyChanged
     {
-        protected readonly INavigationService NavigationService;
+		bool _isBusy;
+		public bool IsBusy
+		{
+			get { return _isBusy; }
+			set { SetProperty(ref _isBusy, value); }
+		}
+
+		protected readonly INavigationService NavigationService;
 
         public object Parameter { get; internal set; }
 
@@ -35,6 +42,15 @@ namespace firebasesample.ViewModels.Base
             var handler = PropertyChanged;
             if (handler != null)
                 handler(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+		protected bool SetProperty<T>(ref T backingField, T value, [CallerMemberName] string propertyName = null)
+        {
+            if (Equals(backingField, value)) return false;
+
+            backingField = value;
+			RaisePropertyChanged(propertyName);
+            return true;
         }
     }
 }
