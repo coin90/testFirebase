@@ -1,38 +1,77 @@
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="firebasesample.Views.Main.MainView">
+<ContentPage x:Class="firebasesample.Views.Main.MainView"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Name="Control">
     <ContentPage.Content>
-        <StackLayout Padding="20" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-        <Label Text="Lista de tareas" Margin="0,20,0,0" VerticalOptions="Center" HorizontalOptions="Center" />
-        <ListView x:Name="lst" VerticalOptions="Start" HorizontalOptions="FillAndExpand" ItemsSource="{Binding List}">
-            <ListView.ItemTemplate>  
-                <DataTemplate>  
-                         <ViewCell>
-                  <StackLayout>
-                    <!--<Image Source="{Binding image}" />-->
-                    <Label Text="{Binding HomeWork}" TextColor="#f35e20" />
-                    <Button Text="Delete" CommandParameter="{Binding Key}" Clicked="DeleteClicked"/>        
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+              Padding="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <StackLayout HorizontalOptions="FillAndExpand"
+                         VerticalOptions="FillAndExpand"
+                         >
+                <Label Margin="0,20,0,0"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       Text="Lista de tareas" />
+                <Entry Margin="0,20,0,0"
+                       HorizontalOptions="FillAndExpand"
+                       VerticalOptions="Center"
+                       Text="{Binding Message}" />
+                <Button Margin="0,20,0,0"
+                        HorizontalOptions="Fill"
+                        BackgroundColor="#C2C700"
+                        Command="{Binding SaveTextCommand}"
+                        Text="Añadir"
+                        TextColor="White" />
+                <Button HorizontalOptions="Fill"
+                        BackgroundColor="#C2C700"
+                        Command="{Binding LogoutCommand}"
+                        Text="Logout"
+                        TextColor="White" />
+            </StackLayout>
+            <ListView x:Name="lst"
+                      Grid.Row="1"
+                      HorizontalOptions="FillAndExpand"
+                      VerticalOptions="Start"
+                      HasUnevenRows="true"
+                      SeparatorVisibility="None"
+                      ItemsSource="{Binding List}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+                                 <StackLayout HorizontalOptions="FillAndExpand"
+                                         Orientation="Horizontal"
+                                         VerticalOptions="CenterAndExpand"
+                                         Padding="20,10">
+                                <!--<Image Source="{Binding image}" />-->
+                                <Label VerticalOptions="Center"
+                                       HorizontalOptions="StartAndExpand"
+                                       Text="{Binding HomeWork}"
+                                       TextColor="#f35e20" />
+                              <Button VerticalOptions="Center"
+                                      Command="{Binding Path=BindingContext.DeleteCommand, Source={x:Reference Control}}" 
+                                        CommandParameter="{Binding Key}"
+                                        Text="Delete" />
 
-<!--                    <Label Text="borrar">
-                         <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer
-                                    Command="{Binding DeleteCommand}"
-                                    NumberOfTapsRequired="1" />
-                        </StackLayout.GestureRecognizers>
-                    </Label>-->
-
-                                    
-                  </StackLayout>
-              </ViewCell>
-                      <!--  <viewc
-                    <ImageCell Text="{Binding }"></ImageCell>     
-                    <Label Text=""  />
--->
-                </DataTemplate>  
-            </ListView.ItemTemplate>  
-        </ListView>   
-
-        <Entry VerticalOptions="Center" Margin="0,20,0,0" HorizontalOptions="FillAndExpand" Text="{Binding Message}"/>
-         <Button Margin="0,20,0,0" Text="Añadir" Command="{Binding SaveTextCommand}" BackgroundColor="#C2C700" HorizontalOptions="Fill" TextColor="White" />
-        <Button  Text="Logout" Command="{Binding LogoutCommand}" BackgroundColor="#C2C700" HorizontalOptions="Fill" TextColor="White" />
-        </StackLayout>
+                            </StackLayout>
+                                <BoxView
+                                    Grid.Row="1"
+                                    HeightRequest=".8"
+                                    BackgroundColor="Gray"/>
+                            </Grid>
+                           
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
