@@ -26,18 +26,42 @@ namespace firebasesample.ViewModels.Login
 
         }
 
+        public String Username
+        {
+            get { return _username; }
+            set
+            {
+                _username = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        public String Password
+        {
+            get { return _password; }
+            set
+            {
+                _password = value;
+                RaisePropertyChanged();
+            }
+        }
+
         public ICommand LoginCommand
         {
             get { return _loginCommand = _loginCommand ?? new DelegateCommandAsync(LoginCommandExecute); }
         }
-        public ICommand SignUpCommand
-        {
-            get { return _signupCommand = _signupCommand ?? new DelegateCommandAsync(SignUpCommandExecute); }
-        }
+
         private async Task LoginCommandExecute()
         {
             await NavigationService.NavigateToAsync<LoginViewModel>();
         }
+
+
+        public ICommand SignUpCommand
+        {
+            get { return _signupCommand = _signupCommand ?? new DelegateCommandAsync(SignUpCommandExecute); }
+        }
+     
         private async Task SignUpCommandExecute()
         {
             if (await _firebaseService.SignUp(Username, Password))
@@ -48,32 +72,6 @@ namespace firebasesample.ViewModels.Login
             {
                 _userDialogService.Toast("El Usuario introducido no es válido");
             }
-
-        }
-        public String Username
-        {
-            get
-            {
-                return _username;
-            }
-            set
-            {
-                _username = value;
-                RaisePropertyChanged();
-            }
-        }
-
-        public String Password
-        {
-            get
-            {
-                return _password;
-            }
-            set
-            {
-                _password = value;
-                RaisePropertyChanged();
-            }
-        }
+        }     
     }
 }

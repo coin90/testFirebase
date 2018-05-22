@@ -25,107 +25,6 @@ namespace firebasesample.iOS.Services.FirebaseAuth
 
         public IntPtr Handle => throw new NotImplementedException();
 
-        
-
-        private void HandleAuthResultHandlerGoogleSignin(User user, NSError error)
-        {
-
-            if (error != null)
-            {
-                AuthErrorCode errorCode;
-                if (IntPtr.Size == 8) // 64 bits devices
-                    errorCode = (AuthErrorCode)((long)error.Code);
-                else // 32 bits devices
-                    errorCode = (AuthErrorCode)((int)error.Code);
-
-                // Posible error codes that SignIn method with credentials could throw
-                switch (errorCode)
-                {
-                    case AuthErrorCode.InvalidCredential:
-                    case AuthErrorCode.InvalidEmail:
-                    case AuthErrorCode.OperationNotAllowed:
-                    case AuthErrorCode.EmailAlreadyInUse:
-                    case AuthErrorCode.UserDisabled:
-                    case AuthErrorCode.WrongPassword:
-                    default:
-                        loginResult = false;
-                        hasLoginResult = true;
-                        break;
-                }
-            }
-            else
-            {
-                loginResult = true;
-                hasLoginResult = true;
-            }
-
-            tokenSource.Cancel();
-        }
-
-        private void HandleAuthResultHandlerSignUp(User user, Foundation.NSError error)
-        {
-            if (error != null)
-            {
-                AuthErrorCode errorCode;
-                if (IntPtr.Size == 8) // 64 bits devices
-                    errorCode = (AuthErrorCode)((long)error.Code);
-                else // 32 bits devices
-                    errorCode = (AuthErrorCode)((int)error.Code);
-
-                // Posible error codes that CreateUser method could throw
-                switch (errorCode)
-                {
-                    case AuthErrorCode.InvalidEmail:
-                    case AuthErrorCode.EmailAlreadyInUse:
-                    case AuthErrorCode.OperationNotAllowed:
-                    case AuthErrorCode.WeakPassword:
-                    default:
-                        signUpResult = false;
-                        hasLoginResult = true;
-                        break;
-                }
-            }
-            else
-            {
-                signUpResult = true;
-                hasLoginResult = true;
-            }
-            tokenSource.Cancel();
-        }
-
-        private void HandleAuthResultLoginHandler(User user, Foundation.NSError error)
-        {
-            if (error != null)
-            {
-                AuthErrorCode errorCode;
-                if (IntPtr.Size == 8) // 64 bits devices
-                    errorCode = (AuthErrorCode)((long)error.Code);
-                else // 32 bits devices
-                    errorCode = (AuthErrorCode)((int)error.Code);
-
-                // Posible error codes that SignIn method with email and password could throw
-                // Visit https://firebase.google.com/docs/auth/ios/errors for more information
-                switch (errorCode)
-                {
-                    case AuthErrorCode.OperationNotAllowed:
-                    case AuthErrorCode.InvalidEmail:
-                    case AuthErrorCode.UserDisabled:
-                    case AuthErrorCode.WrongPassword:
-                    default:
-                        loginResult = false;
-                        hasLoginResult = true;
-                        break;
-                }
-            }
-            else
-            {
-                // Do your magic to handle authentication result
-                loginResult = true;
-                hasLoginResult = true;
-            }
-            tokenSource.Cancel();
-        }
-
         public string getAuthKey()
         {
             return KEY_AUTH;
@@ -143,31 +42,16 @@ namespace firebasesample.iOS.Services.FirebaseAuth
             var signedOut = Auth.DefaultInstance.SignOut(out error);
 
             if (!signedOut)
-            {
-                AuthErrorCode errorCode;
-                if (IntPtr.Size == 8) // 64 bits devices
-                    errorCode = (AuthErrorCode)((long)error.Code);
-                else // 32 bits devices
-                    errorCode = (AuthErrorCode)((int)error.Code);
+            {              
+                return false;
+            }
 
-                // Posible error codes that SignOut method with credentials could throw
-                // Visit https://firebase.google.com/docs/auth/ios/errors for more information
-                switch (errorCode)
-                {
-                    case AuthErrorCode.KeychainError:
-                    default:
-                        return false;
-                        break;
-                }
-            }
-            else{
-                return true;
-            }
+            return true;
         }
 
+        //LOGIN USER/PASS
         public async Task<bool> SignIn(string email, string password)
-        {
-            
+        {            
             Auth.DefaultInstance.SignIn(email, password, HandleAuthResultLoginHandler);
             token = tokenSource.Token;
             t = Task.Factory.StartNew(async () =>
@@ -180,34 +64,22 @@ namespace firebasesample.iOS.Services.FirebaseAuth
             return loginResult;
         }
 
-        public void SignInWithGoogle()
+        private void HandleAuthResultLoginHandler(User user, Foundation.NSError error)
         {
-            XAuth = new OAuth2Authenticator(
-                clientId: "719081152163-odlthbmghah3m60ji4bt5dg3o1ghg089.apps.googleusercontent.com",
-                    clientSecret: "",
-                   scope: "profile",
-                   authorizeUrl: new Uri("https://accounts.google.com/o/oauth2/v2/auth"),
-                redirectUrl: new Uri("com.googleusercontent.apps.719081152163-odlthbmghah3m60ji4bt5dg3o1ghg089:/oauth2redirect"),
-                   accessTokenUrl: new Uri("https://www.googleapis.com/oauth2/v4/token"),
-              isUsingNativeUI: true);
-            var window = UIApplication.SharedApplication.KeyWindow;
-            var vc = window.RootViewController;
-            XAuth.Completed += OnAuthenticationCompleted;
+            if (error != null)
+            {
+                loginResult = false;
+                hasLoginResult = true;
+            }
+            else
+            {
+                loginResult = true;
+                hasLoginResult = true;
+            }
+            tokenSource.Cancel();
+        }                      
 
-            XAuth.Error += OnAuthenticationFailed;
-
-            var viewController = XAuth.GetUI();
-            vc.PresentViewController(viewController, true, null);
-
-        }
-
-        private void OnAuthenticationFailed(object sender, AuthenticatorErrorEventArgs e)
-        {
-            var window = UIApplication.SharedApplication.KeyWindow;
-            var vc = window.RootViewController;
-            vc.DismissViewController(true, null);
-        }
-
+        //COMPROBAR TOKEN LOGIN GOOGLE
         public async Task<bool> SignInWithGoogle(string tokenId)
         {
             String[] tokens = tokenId.Split(new string[] { "###" }, StringSplitOptions.None);
@@ -223,17 +95,43 @@ namespace firebasesample.iOS.Services.FirebaseAuth
             return loginResult;
         }
 
-        public async Task<bool> SignUp(string email, string password)
+
+        private void HandleAuthResultHandlerGoogleSignin(User user, NSError error)
         {
- 
-            Auth.DefaultInstance.CreateUser(email, password,HandleAuthResultHandlerSignUp);
-            token = tokenSource.Token;
-            t = Task.Factory.StartNew(async () =>
+            if (error != null)
             {
-                await Task.Delay(4000);
-            }, token).Unwrap();
-            await t;
-            return signUpResult;
+                loginResult = false;
+                hasLoginResult = true;
+            }
+            else
+            {
+                loginResult = true;
+                hasLoginResult = true;
+            }
+
+            tokenSource.Cancel();
+        }
+
+        // LOGIN GOOLE
+        public void SignInWithGoogle()
+        {
+            XAuth = new OAuth2Authenticator(
+                clientId: "719081152163-odlthbmghah3m60ji4bt5dg3o1ghg089.apps.googleusercontent.com",
+                clientSecret: "",
+                scope: "profile",
+                authorizeUrl: new Uri("https://accounts.google.com/o/oauth2/v2/auth"),
+                redirectUrl: new Uri("com.googleusercontent.apps.719081152163-odlthbmghah3m60ji4bt5dg3o1ghg089:/oauth2redirect"),
+                accessTokenUrl: new Uri("https://www.googleapis.com/oauth2/v4/token"),
+                isUsingNativeUI: true);
+            
+            var window = UIApplication.SharedApplication.KeyWindow;
+            var vc = window.RootViewController;
+            XAuth.Completed += OnAuthenticationCompleted;
+
+            XAuth.Error += OnAuthenticationFailed;
+
+            var viewController = XAuth.GetUI();
+            vc.PresentViewController(viewController, true, null);
         }
 
         private void OnAuthenticationCompleted(object sender, AuthenticatorCompletedEventArgs e)
@@ -248,15 +146,48 @@ namespace firebasesample.iOS.Services.FirebaseAuth
                 var id_token = e.Account.Properties["id_token"].ToString();
 
                 MessagingCenter.Send(FirebaseAuthService.KEY_AUTH, FirebaseAuthService.KEY_AUTH, id_token + "###" + access_token);
-               
             }
             else
             {
                 //Error
             }
-
         }
 
+        private void OnAuthenticationFailed(object sender, AuthenticatorErrorEventArgs e)
+        {
+            var window = UIApplication.SharedApplication.KeyWindow;
+            var vc = window.RootViewController;
+            vc.DismissViewController(true, null);
+        }
+
+        // REGISTRO USUARIO
+        public async Task<bool> SignUp(string email, string password)
+        {
+            Auth.DefaultInstance.CreateUser(email, password,HandleAuthResultHandlerSignUp);
+            token = tokenSource.Token;
+            t = Task.Factory.StartNew(async () =>
+            {
+                await Task.Delay(4000);
+            }, token).Unwrap();
+            await t;
+            return signUpResult;
+        }
+
+        private void HandleAuthResultHandlerSignUp(User user, Foundation.NSError error)
+        {
+            if (error != null)
+            {
+                signUpResult = false;
+                hasLoginResult = true;
+            }
+            else
+            {
+                signUpResult = true;
+                hasLoginResult = true;
+            }
+            tokenSource.Cancel();
+        }
+             
         public string GetUserId()
         {
             var user = Auth.DefaultInstance.CurrentUser;

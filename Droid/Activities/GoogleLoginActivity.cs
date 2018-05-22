@@ -29,26 +29,20 @@ namespace firebasesample.Droid.Activities
         const string KEY_IS_RESOLVING = "is_resolving";
         const string KEY_SHOULD_RESOLVE = "should_resolve";
 
-
         static GoogleApiClient mGoogleApiClient;
 
         bool mIsResolving = false;
 
         bool mShouldResolve = false;
-
-       
+               
         private static GoogleSignInAccount mAuth;
         protected override void OnCreate(Bundle savedInstanceState)
         {
-            base.OnCreate(savedInstanceState);
-
-            GoogleSignInOptions gso3 = new GoogleSignInOptions.Builder(GoogleSignInOptions.DefaultSignIn)
-                                    .RequestProfile()
-                                    .Build();
+            base.OnCreate(savedInstanceState);                     
 
             String token = "719081152163-km9tnjj1d3ba9eenrg9pmh7aie04iqmt.apps.googleusercontent.com";
             GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DefaultSignIn)
-                                                             .RequestIdToken(token)
+                .RequestIdToken(token)
                 .Build();
 
             mGoogleApiClient = new GoogleApiClient.Builder(this)
@@ -63,10 +57,8 @@ namespace firebasesample.Droid.Activities
 
         private void HandleResult(GoogleSignInAccount result)
         {
-
             if (result != null)
-            {
-               
+            {               
                 Intent myIntent = new Intent(this, typeof(GoogleLoginActivity));
                 myIntent.PutExtra("result", result);
                 SetResult(Result.Ok, myIntent);
@@ -199,11 +191,6 @@ namespace firebasesample.Droid.Activities
                 mShouldResolve = false;
             }
             HandleResult(mAuth);
-        }
-
-
-       
-
+        }                      
     }
-
 }

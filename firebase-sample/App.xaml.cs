@@ -10,8 +10,6 @@ namespace firebasesample
         public App()
         {
             InitializeComponent();
-
-
         }
 
         protected override void OnStart()
@@ -20,11 +18,13 @@ namespace firebasesample
 
             InitNavigation();
         }
+
         private Task InitNavigation()
         {
             var navigationService = ViewModelLocator.Instance.Resolve<INavigationService>();
             return navigationService.InitializeAsync();
         }
+
         protected override void OnSleep()
         {
             // Handle when your app sleeps

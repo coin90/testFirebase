@@ -29,12 +29,10 @@ namespace firebasesample.iOS.Services.FirebaseDB
 		{
 			databaseReference = Database.DefaultInstance.GetRootReference();
 		}
+
 		public void GetMessage()
 		{
 			var userId = authService.GetUserId();
-
-
-
 			var messages = databaseReference.GetChild("items").GetChild(userId);
 
 			nuint handleReference2 = messages.ObserveEvent(DataEventType.Value, (snapshot) =>
@@ -44,8 +42,8 @@ namespace firebasesample.iOS.Services.FirebaseDB
 				NSObject value = snapshot.GetValue();
 				if(value is NSDictionary folderData)
 				{
-					var keys = folderData.Keys;
                     ObservableCollection<Homework> list = new ObservableCollection<Homework>();
+
                     foreach (var item in folderData)
                     {
                         list.Add(new Homework
@@ -54,10 +52,12 @@ namespace firebasesample.iOS.Services.FirebaseDB
                             HomeWork = item.Value.ToString()
                         });
                     }
+
                     MessagingCenter.Send(FirebaseDBService.KEY_MESSAGE, FirebaseDBService.KEY_MESSAGE, list);
                 }			           
 			});
 		}
+
 		public void SetMessage(String message)
 		{
 			var userId = authService.GetUserId();
@@ -65,6 +65,7 @@ namespace firebasesample.iOS.Services.FirebaseDB
 			var key = messages.GetChildByAutoId().Key;
 			messages.GetChild(key).SetValue((NSString)message);
 		}
+
 		public String GetMessageKey()
 		{
 			return KEY_MESSAGE;

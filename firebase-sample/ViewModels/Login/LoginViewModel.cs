@@ -31,31 +31,12 @@ namespace firebasesample.ViewModels.Login
             {
                 LoginGoogle(args);
 
-            });
-           
+            });           
         }
 
-        public ICommand SignUpCommand
-        {
-            get { return _signUpCommand = _signUpCommand ?? new DelegateCommandAsync(SignUpCommandExecute); }
-        }
-         
-        public ICommand LoginGoogleCommand
-        {
-            get { return _loginGoogleCommand = _loginGoogleCommand ?? new DelegateCommandAsync(LoginGoogleCommandExecute); }
-        }
-
-
-        public ICommand LoginCommand
-        {
-            get { return _loginCommand = _loginCommand ?? new DelegateCommandAsync(LoginCommandExecute); }
-        }
         public String Username
         {
-            get
-            {
-                return _username;
-            }
+            get { return _username; }
             set
             {
                 _username = value;
@@ -65,10 +46,7 @@ namespace firebasesample.ViewModels.Login
 
         public String Password
         {
-            get
-            {
-                return _password;
-            }
+            get { return _password; }
             set
             {
                 _password = value;
@@ -76,6 +54,43 @@ namespace firebasesample.ViewModels.Login
             }
         }
 
+        public ICommand SignUpCommand
+        {
+            get { return _signUpCommand = _signUpCommand ?? new DelegateCommandAsync(SignUpCommandExecute); }
+        }
+
+        private async Task SignUpCommandExecute()
+        {
+            try
+            {
+                IsBusy = true;
+                await NavigationService.NavigateToAsync<SignUpViewModel>();
+            }
+            catch (Exception ex)
+            {
+                _userDialogService.Toast(ex.Message);
+            }
+            finally
+            {
+                IsBusy = false;
+            }
+        }
+         
+        public ICommand LoginGoogleCommand
+        {
+            get { return _loginGoogleCommand = _loginGoogleCommand ?? new DelegateCommand(LoginGoogleCommandExecute); }
+        }
+
+        private void LoginGoogleCommandExecute()
+        {
+            _firebaseService.SignInWithGoogle();
+        }
+
+        public ICommand LoginCommand
+        {
+            get { return _loginCommand = _loginCommand ?? new DelegateCommandAsync(LoginCommandExecute); }
+        }
+      
         private async Task LoginCommandExecute()
         {
             try
@@ -99,30 +114,7 @@ namespace firebasesample.ViewModels.Login
 				IsBusy = false;
 			}
 
-		}
-
-		private async Task SignUpCommandExecute()
-		{
-			try
-			{
-				IsBusy = true;
-				await NavigationService.NavigateToAsync<SignUpViewModel>();
-			}
-			catch (Exception ex)
-			{
-				_userDialogService.Toast(ex.Message);
-			}
-			finally
-			{
-				IsBusy = false;
-			}
-        }
-
-
-        private async Task LoginGoogleCommandExecute()
-        {
-             _firebaseService.SignInWithGoogle();
-        }
+		}        	                     
 
         private async Task LoginGoogle(String token)
         {

@@ -28,7 +28,7 @@ namespace firebasesample.Droid.Services.FirebaseAuth
                 await Firebase.Auth.FirebaseAuth.GetInstance(MainActivity.app).CreateUserWithEmailAndPasswordAsync(email, password);
                 return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }
@@ -41,7 +41,7 @@ namespace firebasesample.Droid.Services.FirebaseAuth
                 await Firebase.Auth.FirebaseAuth.GetInstance(MainActivity.app).SignInWithEmailAndPasswordAsync(email, password);
                 return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }
@@ -61,7 +61,7 @@ namespace firebasesample.Droid.Services.FirebaseAuth
                 await Firebase.Auth.FirebaseAuth.GetInstance(MainActivity.app).SignInWithCredentialAsync(credential);
                 return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                
                 return false;
@@ -74,7 +74,7 @@ namespace firebasesample.Droid.Services.FirebaseAuth
                  Firebase.Auth.FirebaseAuth.GetInstance(MainActivity.app).SignOut();
                 return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }

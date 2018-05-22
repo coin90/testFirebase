@@ -31,6 +31,28 @@ namespace firebasesample.ViewModels.Main
             });
         }
 
+        private String _message;
+        public String Message
+        {
+            get { return _message; }
+            set
+            {
+                _message = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        private ObservableCollection<Homework> _list;
+        public ObservableCollection<Homework> List
+        {
+            get { return _list; }
+            set
+            {
+                _list = value;
+                RaisePropertyChanged();
+            }
+        }
+
         public ICommand LogoutCommand
         {
             get { return _logoutCommand = _logoutCommand ?? new DelegateCommandAsync(LogoutCommandExecute); }
@@ -42,15 +64,14 @@ namespace firebasesample.ViewModels.Main
             {
                 await NavigationService.NavigateToAsync<LoginViewModel>();
             }
-
-
         }
 
         public ICommand SaveTextCommand
         {
-            get { return _saveTextCommand = _saveTextCommand ?? new DelegateCommandAsync(SaveTextCommandExecute); }
+            get { return _saveTextCommand = _saveTextCommand ?? new DelegateCommand(SaveTextCommandExecute); }
         }
-        private async Task SaveTextCommandExecute()
+
+        private void SaveTextCommandExecute()
         {
             _firebaseDatabaseService.SetMessage(Message);
             _firebaseDatabaseService.GetMessage();
@@ -59,40 +80,15 @@ namespace firebasesample.ViewModels.Main
 
         public ICommand DeleteCommand
         {
-            get { return _deleteCommand = _deleteCommand ?? new DelegateCommandAsync<string>(DeleteCommandExecute); }
+            get { return _deleteCommand = _deleteCommand ?? new DelegateCommand<string>(DeleteCommandExecute); }
         }
-        private async Task DeleteCommandExecute(string key)
+
+        private void DeleteCommandExecute(string key)
         {
             _firebaseDatabaseService.DeleteItem(key);
             _firebaseDatabaseService.GetMessage();
         }
 
-        private String _message;
-        public String Message
-        {
-            get
-            {
-                return _message;
-            }
-            set
-            {
-                _message = value;
-                RaisePropertyChanged();
-            }
-        }
-
-        private ObservableCollection<Homework> _list;
-        public ObservableCollection<Homework> List
-        {
-            get
-            {
-                return _list;
-            }
-            set
-            {
-                _list = value;
-                RaisePropertyChanged();
-            }
-        }
+     
     }
 }

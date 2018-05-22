@@ -11,8 +11,8 @@
 namespace firebasesample {
     
     
-    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("/Users/jccoin/Downloads/xamarin-forms-firebase-sample-master/firebase-sample/fire" +
-        "base-samplePage.xaml")]
+    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("/Users/jccoin/Documents/GitHub/testFirebase/firebase-sample/firebase-samplePage.x" +
+        "aml")]
     public partial class firebase_samplePage : global::Xamarin.Forms.ContentPage {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]

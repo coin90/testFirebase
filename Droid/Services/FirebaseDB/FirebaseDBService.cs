@@ -55,8 +55,7 @@ namespace firebasesample.Droid.Services.FirebaseDB
         {
             var userId = authService.GetUserId();
             databaseReference = database.GetReference("items/" + userId);
-            databaseReference.AddValueEventListener(new ValueEventListener());
-            
+            databaseReference.AddValueEventListener(new ValueEventListener());            
         }
 
         public string GetMessageKey()
@@ -79,7 +78,6 @@ namespace firebasesample.Droid.Services.FirebaseDB
             var userId = authService.GetUserId();
             databaseReference = database.GetReference("items/" + userId);
             databaseReference.Child(key).RemoveValue();
-
         }
     }
 }
