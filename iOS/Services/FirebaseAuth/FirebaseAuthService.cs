@@ -19,7 +19,7 @@ namespace firebasesample.iOS.Services.FirebaseAuth
         private static bool hasLoginResult = false;
         private static bool loginResult = false;
         private static bool signUpResult = false;
-        CancellationTokenSource tokenSource = new CancellationTokenSource();
+        CancellationTokenSource tokenSource ;
         CancellationToken token;
         Task t;
 
@@ -53,6 +53,7 @@ namespace firebasesample.iOS.Services.FirebaseAuth
         public async Task<bool> SignIn(string email, string password)
         {            
             Auth.DefaultInstance.SignIn(email, password, HandleAuthResultLoginHandler);
+			tokenSource = new CancellationTokenSource();
             token = tokenSource.Token;
             t = Task.Factory.StartNew(async () =>
             {
@@ -85,6 +86,7 @@ namespace firebasesample.iOS.Services.FirebaseAuth
             String[] tokens = tokenId.Split(new string[] { "###" }, StringSplitOptions.None);
             var credential = GoogleAuthProvider.GetCredential(tokens[0], tokens[1]);
             Auth.DefaultInstance.SignIn(credential, HandleAuthResultHandlerGoogleSignin);
+			tokenSource = new CancellationTokenSource();
             token = tokenSource.Token;
             t = Task.Factory.StartNew(async () =>
             {
@@ -164,6 +166,7 @@ namespace firebasesample.iOS.Services.FirebaseAuth
         public async Task<bool> SignUp(string email, string password)
         {
             Auth.DefaultInstance.CreateUser(email, password,HandleAuthResultHandlerSignUp);
+			tokenSource = new CancellationTokenSource();
             token = tokenSource.Token;
             t = Task.Factory.StartNew(async () =>
             {
