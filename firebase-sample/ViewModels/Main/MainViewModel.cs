@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -27,7 +28,7 @@ namespace firebasesample.ViewModels.Main
             MessagingCenter.Subscribe<String, ObservableCollection<Homework>>(this, _firebaseDatabaseService.GetMessageKey(), (sender, args) =>
             {
                 //Message = (args);
-                List = (args);
+				List = new ObservableCollection<Homework>(args.OrderBy(x=>x.HomeWork));
             });
         }
 
@@ -73,8 +74,7 @@ namespace firebasesample.ViewModels.Main
 
         private void SaveTextCommandExecute()
         {
-            _firebaseDatabaseService.SetMessage(Message);
-            _firebaseDatabaseService.GetMessage();
+            _firebaseDatabaseService.SetMessage(Message);            
         }
 
 
@@ -85,10 +85,7 @@ namespace firebasesample.ViewModels.Main
 
         private void DeleteCommandExecute(string key)
         {
-            _firebaseDatabaseService.DeleteItem(key);
-            _firebaseDatabaseService.GetMessage();
-        }
-
-     
+            _firebaseDatabaseService.DeleteItem(key);           
+        }             
     }
 }
